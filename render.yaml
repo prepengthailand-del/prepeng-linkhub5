@@ -1,0 +1,30 @@
+services:
+- type: web
+  name: prepeng-linkhub-pro
+  env: python
+  plan: free
+  buildCommand: pip install -r requirements.txt
+  startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+  envVars:
+  - key: ENV
+    value: production
+  - key: DATABASE_URL
+    value: sqlite:///./data.db
+  - key: FB_PAGE_ID
+    sync: false
+  - key: FB_VERIFY_TOKEN
+    sync: false
+  - key: FB_PAGE_ACCESS_TOKEN
+    sync: false
+  - key: FB_CAPI_PIXEL_ID
+    sync: false
+  - key: FB_CAPI_ACCESS_TOKEN
+    sync: false
+  - key: TT_PIXEL_ID
+    sync: false
+  - key: TT_ACCESS_TOKEN
+    sync: false
+  - key: LINE_CHANNEL_SECRET
+    sync: false
+  - key: LINE_CHANNEL_ACCESS_TOKEN
+    sync: false
