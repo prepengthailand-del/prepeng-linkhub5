@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="th">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="stylesheet" href="/static/style.css"/>
+<title>เลือกช่องทางติดต่อ | Prep Eng</title>
+<body>
+<div class="container">
+  <div class="card">
+    <h1>เลือกช่องทางที่สะดวก</h1>
+    <p>ทีม Prep Eng พร้อมดูแลคุณ เลือกช่องทางด้านล่างได้เลย</p>
+
+    <button class="btn line" onclick="goDest('line')">เพิ่มเพื่อน LINE</button>
+    <button class="btn messenger" onclick="goDest('messenger')">Facebook Messenger</button>
+    <button class="btn shopee" onclick="goDest('shopee')">ซื้อผ่าน Shopee</button>
+
+    <div class="foot">ข้อมูลการคลิกของคุณจะถูกบันทึกเพื่อปรับปรุงบริการและวัดผลโฆษณา</div>
+  </div>
+</div>
+
+<script>
+function getQuery(){
+  const q = new URLSearchParams(window.location.search);
+  const obj = {};
+  for (const [k,v] of q.entries()) obj[k]=v;
+  return obj;
+}
+
+async function goDest(dest){
+  const payload = {
+    dest: dest,
+    query: getQuery(),
+    user_agent: navigator.userAgent
+  };
+  const res = await fetch('/track', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(payload)
+  });
+  const data = await res.json();
+  if(!data.ok){ alert('เกิดข้อผิดพลาด'); return; }
+  window.location.href = data.redirect_to; // e.g. /go/messenger?ref=...
+}
+</script>
+</body>
+</html>

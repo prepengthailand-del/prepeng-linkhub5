@@ -1,0 +1,12 @@
+*{box-sizing:border-box}body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:#0b0f19;color:#fff}
+.container{max-width:520px;margin:0 auto;padding:24px}
+.card{background:#111827;border:1px solid #1f2937;border-radius:16px;padding:20px;margin-top:20px}
+h1{font-size:22px;margin:0 0 8px}
+p{opacity:.85}
+.btn{display:block;width:100%;padding:16px 18px;margin:12px 0;border-radius:12px;border:none;font-weight:700;font-size:16px;cursor:pointer}
+.btn.line{background:#06C755}
+.btn.messenger{background:#0191FF}
+.btn.shopee{background:#ee4d2d}
+.foot{font-size:12px;opacity:.7;margin-top:12px}
+.qr{display:flex;justify-content:center;margin-top:10px}
+.qr img{width:120px;height:120px;border-radius:12px}
